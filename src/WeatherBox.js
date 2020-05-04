@@ -6,7 +6,7 @@ export class WeatherBox extends React.Component {
   MOCK_API = true;
 
   styles = {
-    border: 1
+    // border: 1
   };
 
   OPEN_WEATHER_API_KEY = process.env.REACT_APP_OPEN_WEATHER_API_KEY;
@@ -55,7 +55,7 @@ export class WeatherBox extends React.Component {
     ],
     "base": "stations",
     "main": {
-      "temp": 282.55,
+      "temp": 70.11,
       "feels_like": 281.86,
       "temp_min": 280.37,
       "temp_max": 284.26,
@@ -123,7 +123,6 @@ export class WeatherBox extends React.Component {
 
     return (
       <div style={this.styles}>
-        Box
         <WeatherTile day={today}
                      data={this.state.data}
         />
