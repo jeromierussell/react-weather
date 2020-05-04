@@ -1,5 +1,5 @@
 {
-  "name": "react-demo",
+  "name": "react-weather",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -16,8 +16,10 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "eslintConfig": {
-    "extends": "react-app"
+  "_commented_out": {
+    "eslintConfig": {
+      "extends": "react-app"
+    }
   },
   "browserslist": {
     "production": [
