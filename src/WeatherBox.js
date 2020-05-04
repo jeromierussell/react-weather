@@ -3,7 +3,7 @@ import {WeatherTile} from "./WeatherTile";
 
 export class WeatherBox extends React.Component {
   // Used for testing...if true, we bypass any real api calls
-  MOCK_API = true;
+  MOCK_API = false;
 
   styles = {
     // border: 1
