@@ -247,3 +247,14 @@ body {
 .last-updated {
   text-align: center;
 }
+
+@media only screen and (max-width: 600px) {
+  .weather-side {
+    width: 100%;
+  }
+
+  .info-side {
+    margin-bottom: -30px;
+  }
+}
+
