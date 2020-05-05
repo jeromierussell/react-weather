@@ -1,5 +1,5 @@
 export default class MockService {
-  static NEW_MOCK_DATA = {
+  static MOCK_DATA = {
     lat: 38,
     lon: -84.39,
     timezone: "America/New_York",
@@ -1252,7 +1252,7 @@ export default class MockService {
     ]
   };
 
-  static MOCK_DATA = {
+  static OLD_MOCK_DATA = {
     "coord": {
       "lon": -122.08,
       "lat": 37.39

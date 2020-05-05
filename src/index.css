@@ -158,6 +158,8 @@ body {
   -webkit-box-shadow: 0 0 50px -5px rgba(0, 0, 0, 0.25);
   box-shadow: 0 0 50px -5px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
+  /* jro - line up weather icons */
+  text-align: center;
 }
 
 .week-list>li {
@@ -210,7 +212,7 @@ body {
   padding: 25px 35px;
 }
 
-.location-button {
+.location-button, .map-container-button {
   outline: none;
   width: 100%;
   -webkit-box-sizing: border-box;
@@ -232,13 +234,13 @@ body {
   transition: transform 200ms ease, -webkit-transform 200ms ease;
 }
 
-.location-button:hover {
+.location-button:hover, .map-container-button:hover {
   -webkit-transform: scale(0.95);
   -ms-transform: scale(0.95);
   transform: scale(0.95);
 }
 
-.location-button .feather {
+.location-button .feather, .map-container .feather {
   height: 1em;
   width: auto;
   margin-right: 5px;
@@ -248,10 +250,12 @@ body {
   text-align: center;
 }
 
-/* just setting this to handle onClick for now */
-.map-container {
-  height: 400px;
-  width: 500px;
+.map-container-button {
+  width: 400px;
+  border-radius: 0;
+  position: absolute;
+  top: 0;
+  left: 33%;
 }
 
 /*

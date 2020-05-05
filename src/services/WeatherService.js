@@ -2,7 +2,7 @@ import MockService from './MockService';
 
 class WeatherService {
   // Used for testing...if true, we bypass any real api calls
-  static MOCK_API = true;
+  static MOCK_API = false;
 
   static OPEN_WEATHER_API_KEY = process.env.REACT_APP_OPEN_WEATHER_API_KEY;
 
@@ -11,8 +11,6 @@ class WeatherService {
     zip: "40509",
     lat: "38.0043264",
     long: "-84.3874304",
-    // lat: "38",
-    // long: "-84",
   };
 
   static OPEN_WEATHER_API_CALL_CITY = "https://api.openweathermap.org/data/2.5/weather?units=imperial&id=" +
@@ -31,7 +29,6 @@ class WeatherService {
     console.log("getWeatherData()");
     console.log(WeatherService.MOCK_API);
 
-    // I may have Promise issues, yeah.
     if(WeatherService.MOCK_API) {
       return new Promise(function(resolve, reject) {
         resolve({
@@ -40,7 +37,7 @@ class WeatherService {
         });
       });
     } else {
-      return fetch(this.OPEN_WEATHER_API_CALL_ZIP)
+      return fetch(this.OPEN_WEATHER_API_CALL_ONE_SHOT)
         .then(res => res.json())
         .then(
           (result) => {
