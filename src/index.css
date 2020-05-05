@@ -248,13 +248,27 @@ body {
   text-align: center;
 }
 
-@media only screen and (max-width: 600px) {
-  .weather-side {
-    width: 100%;
-  }
+/* just setting this to handle onClick for now */
+.map-container {
+  height: 400px;
+  width: 500px;
+}
 
-  .info-side {
-    margin-bottom: -30px;
-  }
+/*
+  iphone xr
+
+  1792x828px at 326ppi
+*/
+@media only screen
+  and (device-width : 414px)
+  and (device-height : 896px)
+  and (-webkit-device-pixel-ratio : 2) {
+    .weather-side {
+      width: 100%;
+    }
+
+    .info-side {
+      margin-bottom: -30px;
+    }
 }
 

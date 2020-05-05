@@ -1,9 +1,10 @@
 import React from 'react';
+import {RadarTile} from "./RadarTile";
 import {WeatherTile} from "./WeatherTile";
 
 export class WeatherBox extends React.Component {
   // Used for testing...if true, we bypass any real api calls
-  MOCK_API = false;
+  MOCK_API = true;
 
   styles = {
     // border: 1
@@ -29,15 +30,18 @@ export class WeatherBox extends React.Component {
   OPEN_WEATHER_API_CALL_GEO = "https://api.openweathermap.org/data/2.5/weather?units=imperial&lat=" +
     this.OPEN_WEATHER_CONFIG.lat + "&long=" + this.OPEN_WEATHER_CONFIG.long + "&appid=" + this.OPEN_WEATHER_API_KEY;
 
-
   // move to higher level, non-display component?
   constructor(props) {
     super(props);
+
     this.state = {
       error: null,
       loading: true,
+      style: 0,
       data: {}
     };
+
+    this.changeStyle = this.changeStyle.bind(this);
   }
 
   MOCK_DATA = {
@@ -117,16 +121,38 @@ export class WeatherBox extends React.Component {
     }
   }
 
+  changeStyle() {
+    console.log("changeStyle() before [" + this.state.style + "]");
+
+    // basically toggle the style at this point
+    this.setState({
+      style: this.state.style === 0 ? 1 : 0
+    });
+    console.log("changeStyle() after [" + this.state.style + "]");
+  }
+
   render() {
     const today = new Date();
-    console.log(today);
+    // console.log(today);
 
-    return (
-      <div style={this.styles}>
-        <WeatherTile day={today}
-                     data={this.state.data}
-        />
-      </div>
-    )
+    if (this.state.style === 0) {
+      return (
+        <div style={this.styles}>
+          <WeatherTile day={today}
+                       data={this.state.data}
+                       onClick={this.changeStyle}
+                       style={this.state.style}
+          />
+        </div>
+      )
+    } else {
+      return (
+        <div style={this.styles}>
+          <RadarTile style={this.state.style}
+                     onClick={this.changeStyle}
+          />
+        </div>
+      )
+    }
   }
 }
