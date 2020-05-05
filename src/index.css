@@ -258,6 +258,12 @@ body {
   left: 33%;
 }
 
+#radar-map {
+  position: absolute;
+  top: -80px;
+  left: 33%;
+}
+
 /*
   iphone xr
 
@@ -273,6 +279,15 @@ body {
 
     .info-side {
       margin-bottom: -30px;
+    }
+
+    .map-container-button {
+      left: 6px;
+    }
+
+    #radar-map {
+      left: 6px;
+      height: 1000px;
     }
 }
 
