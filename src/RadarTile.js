@@ -8,7 +8,7 @@ export class RadarTile extends React.Component {
     left: '33%'
   };
 
-  map_url = "http://openweathermap.org/weathermap?basemap=map&cities=false&layer=radar&lat=37.4051&lon=-86.7046&zoom=6";
+  map_url = "https://openweathermap.org/weathermap?basemap=map&cities=false&layer=radar&lat=37.4051&lon=-86.7046&zoom=6";
 
   constructor(props) {
     super(props);
