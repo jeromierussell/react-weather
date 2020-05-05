@@ -96,7 +96,7 @@ export class WeatherTile extends React.Component {
               <div className="today-info">
                 <div className="precipitation">
                   <span className="title">PRECIPITATION</span>
-                  <span className="value">{this.props.data.current ? this.props.data.current.rain['1h'] : ''}</span>
+                  <span className="value">{this.props.data.current && this.props.data.current.rain ? this.props.data.current.rain['1h'] : ''}</span>
                   <div className="clear"></div>
                 </div>
                 <div className="humidity">
