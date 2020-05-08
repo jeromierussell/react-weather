@@ -52,19 +52,22 @@ export class WeatherTile extends React.Component {
     if (this.props.data) {
       const today = moment(this.props.data.day);
       const today_day = today.format('dddd');
-      const today_date = today.format('MMMM Do YYYY');
+      const today_date = today.format("MMMM Do YYYY, h:mm:ss a");
 
       let iconClass = "";
       let weatherIconStyle = {
-        fontSize: 48,
+        fontSize: 72,
         color: 'white'
       };
 
       let lastUpdated = "loading...";
+      let lastUpdatedTimeDisplay = "";
+
       if (this.props.data.current) {
         iconClass = "wi wi-owm-";
 
         const lastUpdatedTime = moment(new Date(this.props.data.current.dt * 1000));
+        lastUpdatedTimeDisplay = lastUpdatedTime.format("dddd, MMMM Do YYYY, h:mm:ss a");
 
         lastUpdated = lastUpdatedTime.fromNow();
         const sunrise = moment(new Date(this.props.data.current.sunrise * 1000));
@@ -100,7 +103,6 @@ export class WeatherTile extends React.Component {
             <div className="date-container">
               <h2 className="date-dayname">{today_day}</h2>
               <span className="date-day">{today_date}</span>
-              <i className="location-icon" data-feather="map-pin"></i>
               <span className="location">Lexington</span>
             </div>
             <div className="weather-container">
@@ -109,6 +111,9 @@ export class WeatherTile extends React.Component {
               </div>
               <h1 className="weather-temp">{this.props.data.current ? Math.round(this.props.data.current.temp) : ''}°F</h1>
               <h3 className="weather-desc">{this.props.data.current ? this.props.data.current.weather[0].main : ''}</h3>
+              <div className="weather-high-low">
+                {this.props.data.daily ? Math.round(this.props.data.daily[0].temp.min) : ''}°F - {this.props.data.daily ? Math.round(this.props.data.daily[0].temp.max) : ''}°F
+              </div>
             </div>
           </div>
           <div className="info-side">
@@ -164,6 +169,9 @@ export class WeatherTile extends React.Component {
           </div>
           <div className="last-updated">
             Last updated: {lastUpdated.toString()}
+          </div>
+          <div className="last-updated-time">
+            {lastUpdatedTimeDisplay}
           </div>
         </div>
       )

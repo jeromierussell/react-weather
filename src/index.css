@@ -250,6 +250,11 @@ body {
   text-align: center;
 }
 
+.last-updated-time {
+  text-align: center;
+  font-size: 10px;
+}
+
 .map-container-button {
   width: 400px;
   border-radius: 0;
@@ -262,6 +267,12 @@ body {
   position: absolute;
   top: -80px;
   left: 33%;
+}
+
+
+.weather-high-low {
+  margin-top: 5px;
+  font-size: 12px;
 }
 
 /*
