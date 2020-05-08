@@ -15,7 +15,7 @@ export class WeatherTile extends React.Component {
     this.props.onClick();
   }
 
-  deriveWeatherIconColor(code) {
+  deriveWeatherIconColor(code, isDay) {
     let color = 'white';
 
     switch (true) {
@@ -32,7 +32,11 @@ export class WeatherTile extends React.Component {
         color = 'white';
         break;
       case (code === 800):
-        color = 'orange';
+        if(isDay) {
+          color = 'orange';
+        } else {
+          color = 'midnightblue';
+        }
         break;
       case (code < 900):
         color = 'dimgrey';
@@ -50,20 +54,36 @@ export class WeatherTile extends React.Component {
       const today_day = today.format('dddd');
       const today_date = today.format('MMMM Do YYYY');
 
-      let lastUpdated = "loading...";
-      if (this.props.data.current) {
-        lastUpdated = moment(new Date(this.props.data.current.dt * 1000)).fromNow();
-      }
-
       let iconClass = "";
       let weatherIconStyle = {
         fontSize: 48,
         color: 'white'
       };
 
+      let lastUpdated = "loading...";
       if (this.props.data.current) {
-        iconClass = "wi wi-owm-" + this.props.data.current.weather[0].id;
-        weatherIconStyle.color = this.deriveWeatherIconColor(this.props.data.current.weather[0].id);
+        iconClass = "wi wi-owm-";
+
+        const lastUpdatedTime = moment(new Date(this.props.data.current.dt * 1000));
+
+        lastUpdated = lastUpdatedTime.fromNow();
+        const sunrise = moment(new Date(this.props.data.current.sunrise * 1000));
+        const sunset = moment(new Date(this.props.data.current.sunset * 1000));
+
+        // console.log("sunrise [" + sunrise.toString() + "]");
+        // console.log("sunset [" + sunset.toString() + "]");
+        // console.log("last updated [" + lastUpdatedTime.toString() + "]");
+
+        let isDay = true;
+        if (sunrise.isSameOrBefore(lastUpdatedTime) && lastUpdatedTime.isBefore(sunset)) {
+          iconClass += 'day-';
+        } else {
+          isDay = false;
+          iconClass += 'night-';
+        }
+
+        iconClass += this.props.data.current.weather[0].id;
+        weatherIconStyle.color = this.deriveWeatherIconColor(this.props.data.current.weather[0].id, isDay);
       }
 
       const iconClassWeek = [];
